@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { display: flex; flex-direction: column; gap: 15px; }
+        .section { border: 1px solid #ccc; padding: 15px; border-radius: 5px; }
+        .section h2 { margin-top: 0; }
+        .flex-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .flex-row label { min-width: 120px; }
+        .flex-row input[type="text"], .flex-row textarea { flex-grow: 1; padding: 8px; border: 1px solid #ddd; border-radius: 3px; }
+        .flex-row button, .action-button { padding: 8px 15px; border: none; border-radius: 3px; cursor: pointer; background-color: #007bff; color: white; }
+        .action-button { background-color: #17a2b8; }
+        .disconnect-button { background-color: #dc3545; }
+        #messagesArea { background-color: #f8f9fa; border: 1px solid #eee; padding: 10px; height: 300px; overflow-y: auto; white-space: pre-wrap; font-family: monospace; }
+        .log-message { margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px dashed #eee; }
+        .log-message:last-child { border-bottom: none; }
+        .log-client { color: blue; }
+        .log-server { color: green; }
+        .log-error { color: red; }
+        .log-info { color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WebSocket Multichannel Client</h1>
+
+        <div class="section">
+            <h2>Connection</h2>
+            <div class="flex-row">
+                <label for="serverUrl">Server URL:</label>
+                <input type="text" id="serverUrl" value="ws://localhost:8080">
+            </div>
+            <div class="flex-row">
+                <label for="jwtToken">JWT Token:</label>
+                <input type="text" id="jwtToken" placeholder="Enter your JWT token (e.g., {&quot;userId&quot;:&quot;demoUser&quot;})">
+            </div>
+            <div class="flex-row">
+                <button id="connectButton">Connect</button>
+                <button id="disconnectButton" class="disconnect-button" disabled>Disconnect</button>
+            </div>
+        </div>
+
+        <div class="section" id="actionsSection" style="display: none;">
+            <h2>Actions</h2>
+            <div class="flex-row">
+                <label for="channelName">Channel Name:</label>
+                <input type="text" id="channelName" value="general">
+            </div>
+            <div class="flex-row">
+                <button id="subscribeButton" class="action-button">Subscribe</button>
+                <button id="unsubscribeButton" class="action-button">Unsubscribe</button>
+            </div>
+            <hr>
+            <div class="flex-row">
+                <label for="messagePayload">Message Payload (JSON):</label>
+                <textarea id="messagePayload" rows="3">{ "text": "Hello from client!" }</textarea>
+            </div>
+            <div class="flex-row">
+                 <label for="clientMessageId">Client Message ID (Optional):</label>
+                 <input type="text" id="clientMessageId" placeholder="e.g., client-msg-123">
+            </div>
+            <div class="flex-row">
+                <button id="sendMessageButton" class="action-button">Send Message</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Logs & Server Messages</h2>
+            <div id="messagesArea"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
