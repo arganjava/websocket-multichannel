@@ -1,0 +1,30 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arganjava/websocket-multichannel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arganjava/websocket-multichannel/issues"
+  },
+  "homepage": "https://github.com/arganjava/websocket-multichannel#readme",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "redis": "^5.1.0",
+    "uuid": "^11.1.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
