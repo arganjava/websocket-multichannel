@@ -131,8 +131,6 @@ wss.on('connection', (ws, req) => {
 });
 
 // Keep track of Redis channels this server instance is subscribed to
-const subscribedRedisChannels = new Set();
-
 const subscribedRedisChannels = new Set(); // Tracks Redis channels this server INSTANCE is subscribed to.
 
 // Handles client 'subscribe' requests
